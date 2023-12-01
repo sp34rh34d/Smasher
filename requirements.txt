@@ -1,0 +1,10 @@
+certifi==2023.11.17
+charset-normalizer==3.3.2
+eml-parser==1.17.5
+idna==3.6
+publicsuffixlist==0.10.0.20231122
+python-dateutil==2.8.2
+pytz==2023.3.post1
+requests==2.31.0
+six==1.16.0
+urllib3==2.1.0
