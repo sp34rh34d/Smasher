@@ -222,7 +222,7 @@ class smasher_eml_analyzer:
                         urls = re.findall(url_pattern, text_content.decode('utf-8'))
 
                         for url in urls:
-                            print(f"\nfound: {c.Purple}{url}{c.Reset}")
+                            print(f"\nfound: {c.Green}{url}{c.Reset}")
                             print("checking url on Kaspersky OpenTIP...")
                             data=KasperskyOpenTIP.kaspersky_url_check(url)
                             if 'Zone' in data:
@@ -283,7 +283,7 @@ Examples:
     metadata extractor
     use: python3 smasher.py eml -f file.eml -am
         
-    show available zonetime
+    show available timezone
     use: python3 smasher.py eml -tz all
 
 				""")
