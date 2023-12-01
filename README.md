@@ -37,7 +37,7 @@ use: python3 smasher.py eml -f file.eml -am
 <img width="691" alt="Screenshot 2023-12-01 at 15 10 51" src="https://github.com/sp34rh34d/Smasher/assets/94752464/16d847b1-f9d2-475e-9590-20c6be2c9390">
 
 
-show available zonetime
+show available timezone
 ```
 use: python3 smasher.py eml -tz all
 ```
