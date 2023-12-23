@@ -1,10 +1,9 @@
-# Smasher
+# Smasher v1.1
 Forensic tool to analyze eml files
 
 ```
 Visit the following sites and get an api token, then put them in the tokens.ini file
 VirusTotal token -> https://docs.virustotal.com/reference/getting-started
-Kaspersky OpenTIP token -> https://opentip.kaspersky.com/token
 ```
 
 ```
