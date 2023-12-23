@@ -1,11 +1,29 @@
 # Smasher v1.1
 Forensic tool to analyze eml files
 
+### VT api
 ```
 Visit the following sites and get an api token, then put them in the tokens.ini file
 VirusTotal token -> https://docs.virustotal.com/reference/getting-started
 ```
 
+### Installation
+```
+git clone https://github.com/sp34rh34d/Smasher.git
+pip3 install -r requirements.txt
+```
+### Smasher Features
+* Headers extractor for eml files
+* Urls extractor for eml files
+* Kaspersky reputation check for sender domain
+* MXToolBox Blacklist check for sender domain
+* VirusTotal reputation check for sender domain
+* Kaspersky malicious activity check for urls detected
+* Metadata extractor for attachments detected
+* VirusTotal reputation check for attachements detected (sha256)
+
+  
+### Commands
 ```
 Usage:
   python3 smasher.py eml [args]
@@ -46,6 +64,8 @@ show available timezone
 ```
 use: python3 smasher.py eml -tz all
 ```
+
+
 
 
 
