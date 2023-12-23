@@ -6,9 +6,10 @@ import os
 import re
 from core.core import *
 from os import path
-import sys,eml_parser,pytz,requests
+import sys,eml_parser,pytz
 import subprocess
 from core.KasperskyOpenTIP import *
+from core.MXToolBox import *
 
 class smasher_options:
     eml_file_path=""
@@ -161,20 +162,9 @@ class smasher_eml_analyzer:
     def blacklist_check(email):
         try:
             domain = email[email.index('@') + 1 : ]
-            print(f"\nChecking domain {c.Orange}{domain}{c.Reset} on MXToolBox [blacklist] ...")
-            headers={"User-Agent":"smasher","TempAuthorization":"27eea1cd-e644-4b7b-bebe-38010f55dab3"}
-            response=requests.get(f"https://mxtoolbox.com/api/v1/Lookup?command=blacklist&argument={domain}&resultindext=1&disableRhsbl=true&format=1",headers=headers)
-            data=response.json()
-            
-            if len(data['ListedBlacklists'])>0:
-                print(f"Domain listed on {c.Red}{len(data['ListedBlacklists'])}{c.Reset} blacklist")
-                print("  ------------------details------------------")
-                for x in range(0,len(data['ResultDS']['SubActions'])):
-                    if data['ResultDS']['SubActions'][x]['Status']=="2":
-                        print(f"  - Listed on {c.Red}{data['ResultDS']['SubActions'][x]['Name']}{c.Reset}")
-                print("  ------------------details------------------")
-            else:
-                print("Domain is not listed.")
+            KasperskyOpenTIP.check_domain(domain)
+            MXToolBox.blacklist_check(domain)
+
         except:
             print(f"{c.Red}Error on blacklist process!{c.Reset}")
 
@@ -210,7 +200,7 @@ class smasher_eml_analyzer:
             return None
         
     def urls_extractor(file):
-        try:
+        # try:
             print(f"\nExtracting url from file {c.Blue}{file}{c.Reset}")
             with open(file, 'rb') as eml_file:
                 msg = BytesParser(policy=policy.default).parse(eml_file)
@@ -224,37 +214,10 @@ class smasher_eml_analyzer:
                         for url in urls:
                             print(f"\nfound: {c.Green}{url}{c.Reset}")
                             print("checking url on Kaspersky OpenTIP...")
-                            data=KasperskyOpenTIP.kaspersky_url_check(url)
-                            if 'Zone' in data:
-                                print("  ------------------details----------------")
-                                zone=data["Zone"]
-                                if zone=="Green":
-                                    print(f"  - Zone: {c.Green}Green{c.Reset}")
-                                    print(f"  - Danger level: {c.Green}Low{c.Reset}")
-                                    print(f"  - Details: {c.Green}Clean / No threats detected{c.Reset}")
-                                elif zone=="Red":
-                                    print(f"  - Zone: {c.Red}Red{c.Reset}")
-                                    print(f"  - Danger level: {c.Red}High{c.Reset}")
-                                    print(f"  - Details: {c.Red}Dangerous{c.Reset}")
-                                elif zone=="Orange":
-                                    print(f"  - Zone: {c.Orange}Orange{c.Reset}")
-                                    print(f"  - Danger level: {c.Orange}Medium{c.Reset}")
-                                    print(f"  - Details: {c.Orange}n/a *{c.Reset}")
-                                elif zone=="Yellow":
-                                    print(f"  - Zone: {c.Yellow}Yellow{c.Reset}")
-                                    print(f"  - Danger level: {c.Yellow}Medium{c.Reset}")
-                                    print(f"  - Details: {c.Yellow}Adware and other{c.Reset}")
-                                else:
-                                    print(f"  - Zone: {c.DarkGrey}Gray{c.Reset}")
-                                    print(f"  - Danger level: {c.DarkGrey}Info{c.Reset}")
-                                    print(f"  - Details: {c.DarkGrey}Not categorized{c.Reset}")
-                                print(f"  - NameServers: {data['UrlDomainWhoIs']['NameServers']}")
-                                print(f"  - Created: {data['UrlDomainWhoIs']['Created']}")
-                                print(f"  - Expires: {data['UrlDomainWhoIs']['Expires']}")
-                                print("  ------------------END--------------------")
+                            KasperskyOpenTIP.check_url(url)
             print("done")
-        except:
-            pass
+        # except:
+        #     pass
         
                         
 class eml_help:
@@ -283,7 +246,7 @@ Examples:
     metadata extractor
     use: python3 smasher.py eml -f file.eml -am
         
-    show available timezone
+    show available zonetime
     use: python3 smasher.py eml -tz all
 
 				""")

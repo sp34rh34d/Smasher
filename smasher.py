@@ -12,7 +12,6 @@ def read_ini():
     config = configparser.ConfigParser()
     config.read('tokens.ini')
     VirusTotal_options.virus_total_token = config.get('VirusTotal', 'token')
-    KasperskyOpenTIP_options.kaspersky_opentip_token = config.get('KasperskyOpenTIP', 'token')
 
 
 parser = argparse.ArgumentParser(add_help=False)
