@@ -21,5 +21,5 @@ class MXToolBox:
             else:
                 print("Domain is not listed.")
         except:
-            print(f"{c.Red}Error on domain reputation process for virus total!{c.Reset}")
+            print(f"{c.Red}Error on domain reputation process for MXToolBox!{c.Reset}")
             pass

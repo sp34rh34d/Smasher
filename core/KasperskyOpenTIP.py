@@ -8,7 +8,7 @@ class KasperskyOpenTIP_zones:
     zones = {
         "Red":{"threat_level":f"{c.Red}High{c.Reset}","zone":f"{c.Red}Red{c.Reset}","description":f"{c.Red}Dangerous{c.Reset}"},
         "Orange":{"threat_level":f"{c.Orange}Medium{c.Reset}","zone":f"{c.Orange}Orange{c.Reset}","description":f"{c.Orange}N/D *{c.Reset}"},
-        "Gray":{"threat_level":f"{c.DarkGrey}Info{c.Reset}","zone":f"{c.DarkGrey}Gray{c.Reset}","description":f"{c.DarkGrey}Not categorized{c.Reset}"},
+        "Grey":{"threat_level":f"{c.DarkGrey}Info{c.Reset}","zone":f"{c.DarkGrey}Grey{c.Reset}","description":f"{c.DarkGrey}Not categorized{c.Reset}"},
         "Yellow":{"threat_level":f"{c.Yellow}Medium{c.Reset}","zone":f"{c.Yellow}Yellow{c.Reset}","description":f"{c.Yellow}Adware and other{c.Reset}"},
         "Green":{"threat_level":f"{c.Green}Info{c.Reset}","zone":f"{c.Green}Green{c.Reset}","description":f"{c.Green}Clean / No threats detected{c.Reset}"}
     }
