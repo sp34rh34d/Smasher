@@ -31,6 +31,6 @@ class Banner:
 ░  ░  ░  ░      ░     ░   ▒   ░  ░  ░   ░  ░░ ░   ░     ░░   ░ 
       ░         ░         ░  ░      ░   ░  ░  ░   ░  ░   ░     {c.Reset}
 Coded by:{c.Red} sp34rh34d{c.Reset}
-twitter: {c.Red}@AdonsIzaguirre{c.Reset}
+twitter: {c.Red}@spearh34d{c.Reset}
 Welcome to Smasher v1.1 [{c.Green}https://github.com/sp34rh34d/Smasher{c.Reset}]
 ======================================================================================================""")
